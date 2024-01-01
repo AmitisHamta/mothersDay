@@ -38,6 +38,8 @@ const checkUser = users => {
     users.forEach(user => {
         if (user.number === phoneInput.value) {
             console.log('login successful');
+        }else if (!phoneInput.value || !cardInput.value) {
+            loginError();
         }else {
             errorText.textContent = 'لطفا با شماره تلفن مادر وارد شوید'
             loginError();
@@ -46,7 +48,6 @@ const checkUser = users => {
 }
 
 const showContainer = () => {
-    if (phoneInput.value && cardInput.value) {
         errorText.classList.remove('display-inline');
         modal.classList.add('display-none');
         graficContainer.style.filter = 'none';
@@ -55,9 +56,6 @@ const showContainer = () => {
         setFadeIn();
         setMusic();
         resetInputs();
-    }else {
-        loginError();
-    }
 }
 
 const loginError = () => {
