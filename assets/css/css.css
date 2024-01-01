@@ -244,6 +244,7 @@ html, body {
         height: 100%;
         top: 0;
         right: -73%;
+        display: none;
     }
 
     .mother-title-img, .mother-description-img {

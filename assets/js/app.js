@@ -16,11 +16,6 @@ const cardInput = $.getElementById('card-input');
 const errorText = $.querySelector('small');
 const spinner = $.querySelector('.commonninja_component')
 
-const deleteRemark = () => {
-    const remark = $.querySelector('.commonninja-ribbon');
-    remark.style.display = 'none !important';
-}
-
 const setFadeIn = () => {
     motherImg.classList.add('fade-in');
     setTimeout(() => {
@@ -32,7 +27,13 @@ const setMusic = () => {
     music.play();
 }
 
-const checkData = () => {
+async function checkNumber () {
+    let response = await fetch('https://mothersdayhamta-default-rtdb.firebaseio.com/users');
+    let users = await response.json();
+    console.log(console.log(users));
+}
+
+const showContainer = () => {
     if (phoneInput.value && cardInput.value) {
         errorText.classList.remove('display-inline');
         modal.classList.add('display-none');
@@ -72,7 +73,6 @@ const changeMusicStatus = () => {
 window.addEventListener('load', () => {
     // setFadeIn();
     // setMusic();
-    deleteRemark()
 })
 
 musicBtn.addEventListener('click', () => {
@@ -81,5 +81,6 @@ musicBtn.addEventListener('click', () => {
 
 submitBtn.addEventListener('click', event => {
     event.preventDefault();
-    checkData();
+    // showContainer();
+    checkNumber();
 })
