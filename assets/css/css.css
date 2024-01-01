@@ -316,4 +316,12 @@ html, body {
     #submit-btn {
         width: 100%;
     }
+
+    #data-modal small {
+        font-size: 14px;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
 }
