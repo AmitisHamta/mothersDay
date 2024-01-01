@@ -287,7 +287,7 @@ html, body {
     }
 
     .cfEfwL .wheel-item {
-        font-size: 15px;
+        font-size: 15px !important;
     }
 
     #data-modal {
