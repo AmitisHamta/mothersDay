@@ -39,10 +39,13 @@ const checkUser = users => {
         if (user.number === phoneInput.value) {
             console.log('login successful');
         }else if (!phoneInput.value || !cardInput.value) {
+            errorText.textContent = 'لطفا اطلاعات رو وارد کنید';
             loginError();
+            console.log('empty')
         }else {
-            errorText.textContent = 'لطفا با شماره تلفن مادر وارد شوید'
+            errorText.textContent = 'لطفا با شماره تلفن مادر وارد شوید';
             loginError();
+            console.log('wrong')
         }
     })
 }
