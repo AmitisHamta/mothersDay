@@ -28,7 +28,7 @@ const setMusic = () => {
 }
 
 async function checkNumber () {
-    let response = await fetch('https://mothersdayhamta-default-rtdb.firebaseio.com/users');
+    let response = await fetch('https://mothersdayhamta-default-rtdb.firebaseio.com/users.json');
     let users = await response.json();
     console.log(console.log(users));
 }
