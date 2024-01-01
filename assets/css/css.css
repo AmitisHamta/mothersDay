@@ -290,6 +290,10 @@ html, body {
         font-size: 15px !important;
     }
 
+    .dQoHqJ .wheel-item::before {
+        font-size: 15px !important;
+    }
+
     #data-modal {
         left: 5%;
         width: 90%;
