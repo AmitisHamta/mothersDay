@@ -35,19 +35,24 @@ async function getData () {
 }
 
 const checkUser = users => {
-    users.forEach(user => {
-        if (user.number === phoneInput.value) {
-            console.log('login successful');
-        }else if (!phoneInput.value || !cardInput.value) {
+    if (!phoneInput.value || !cardInput.value) {
             errorText.textContent = 'لطفا اطلاعات رو وارد کنید';
             loginError();
             console.log('empty')
-        }else {
-            errorText.textContent = 'لطفا با شماره تلفن مادر وارد شوید';
-            loginError();
-            console.log('wrong')
-        }
-    })
+    }else {
+        users.forEach(user => {
+            if (user.number === phoneInput.value) {
+                console.log('login successful');
+                showContainer();
+                return true;
+            }else {
+                errorText.textContent = 'لطفا با شماره تلفن مادر وارد شوید';
+                loginError();
+                console.log('wrong')
+            }
+        })
+    }
+    
 }
 
 const showContainer = () => {
