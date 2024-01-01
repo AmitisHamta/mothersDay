@@ -3,15 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/5ab2e9fcc1.js" crossorigin="anonymous"></script>
     <script src="https://cdn.commoninja.com/sdk/latest/commonninja.js" defer></script>
     <link rel="stylesheet" href="assets/css/css.css">
     <title>Celebration</title>
 </head>
 <body>
+    
     <div id="container">
-        <div id="spinner-container">
-            
-            <div class="commonninja_component pid-73264568-e892-4505-a9bf-0439bb2c85d0"></div>
+        <form id="data-modal">
+            <h1>شرکت آمیتیس همتا</h1>
+            <p>خوش آمدید!</p>
+            <div id="inputs">
+                <input type="text" placeholder="09012345678" id="phone-input" class="input">
+                <input type="text" placeholder="1234-5678-9123-4567" id="card-input" class="input">
+            </div>
+            <button id="submit-btn">
+                تایید
+            </button>
+            <small>لطفا اطلاعات رو به درستی وارد کنید ❤</small>
+        </form>
+        <div id="grafic-container">
+            <audio id="music" src="assets/musics/Ragheb - Madar (320).mp3" type="audio/mpeg" preload="none"></audio>
+            <img src="assets/Images/mom2.png" alt="" id="main-img">
+            <div>
+                <img src="assets/Images/Mom.png" alt="" class="mother-title-img">
+            </div>
+            <div>
+                <img src="assets/Images/mom1.png" alt="" class="mother-description-img">
+            </div>
+            <button id="music-btn" class="pause">
+                <i class="fa-solid fa-pause"></i>
+                <i class="fa-solid fa-play"></i>
+            </button>
+        </div>
+        <div class="commonninja_component pid-73264568-e892-4505-a9bf-0439bb2c85d0"></div>
+        <div id="footer">
+            <p>شرکت آمیتیس همتا، روز مادر را به شما تبریک میگوید</p>
         </div>
     </div>
     <script src="assets/js/app.js"></script>

@@ -1,23 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri&display=swap');
+
 html, body {
     width: 100%;
     height: 100%;
+    background-color: bisque;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'El Messiri', sans-serif;
 }
 
 #container {
     width: 100%;
     height: 100%;
+    background-color: bisque;
 }
 
-#spinner-container {
+#grafic-container {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+    filter: blur(10px);
+}
+
+#main-img {
+    width: 69%;
+    position: absolute;
+    top: 0;
+    height: auto;
+}
+
+.mother-title-img {
+    position: absolute;
+    top: 8%;
+    left: 20%;
+    width: 400px;
+    height: 300px;
+    opacity: 0;
+}
+
+.mother-description-img {
+    position: absolute;
+    top: 28%;
+    left: 15%;
+    width: 400px;
+    height: 300px;
+    opacity: 0;
+}
+
+.fade-in {
+    animation: fade-in 1s ease-in-out;
+    opacity: 1;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+#music-btn {
+    position: absolute;
+    left: 5%;
+    bottom: 5%;
+    outline: none;
+    border: 1px solid purple;
+    border-radius: 50%;
+    font-size: 30px;
+    width: 65px;
+    height: 65px;
+    cursor: pointer;
+    padding-top: 10px;
+    color: purple;
+    background-color: transparent;
+}
+
+.play {
+    padding-left: 3px;
+}
+
+#music-btn.play .fa-pause {
+    display: none;
+}
+
+#music-btn.pause .fa-play {
+    display: none;
+}
+
+.height-110 {
+    height: 110%;
+}
+
+#data-modal {
+    width: 30%;
+    display: flex;
+    align-items: center;
     justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px;
+    position: absolute;
+    top: 25%;
+    left: 35%;
+    background-color: #108ea5;
+    border: 1px solid #108ea5;
+    border-radius: 10px;
+    opacity: 1;
+    color: whitesmoke;
+    z-index: 10;
+    overflow: hidden;
+    animation: popdown 1s ease-in-out;
+}
+
+.display-none {
+    display: none !important;
+}
+
+@keyframes popdown {
+    from {
+        top: -25%;
+        opacity: 0;
+    }
+
+    to {
+        top: 25%;
+        opacity: 1;
+    }
+}
+
+#inputs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.input {
+    width: 70%;
+    height: 40px;
+    font-size: 18px;
+    background-color: whitesmoke;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    outline: none;
+    color: black;
+    padding: 10px;
+}
+
+.input::placeholder {
+    opacity: 0.6;
+    font-size: 15px;
+}
+
+#data-modal h1 {
+    font-size: 40px;
+    color: whitesmoke;
+    direction: rtl;
+}
+
+#data-modal p {
+    direction: rtl;
+    color: whitesmoke;
+    font-size: 25px;
+}
+
+#submit-btn {
+    outline: none;
+    width: 70%;
+    height: 40px;
+    border: 1px solid #dc8501;
+    border-radius: 10px;
+    color: whitesmoke;
+    background-color: #dc8501;
+    font-size: 23px;
+    cursor: pointer;
+}
+
+#data-modal small {
+    color: rgb(255, 41, 41);
+    text-align: center;
+    direction: rtl;
+    display: none;
+    font-size: 20px;
+}
+
+#spinner-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.commonninja_component {
+    background-color: bisque;
+    display: none !important;
+    margin-bottom: 50px !important;
+}
+
+.kvBCfW .wheel-section-container .details-wrapper .details h2,
+.kvBCfW .wheel-section-container .details-wrapper .details p,
+.kvBCfW .wheel-section-container .details-wrapper .details button {
+    direction: rtl;
+}
+
+.kvBCfW .wheel-section-container .details-wrapper .details h2 {
+    padding-bottom: 10px;
+}
+
+.kvBCfW .wheel-section-container .details-wrapper .details.prize .prize-icon {
+    color: red !important;
+}
+
+.display-inline {
+    display: inline !important;
+}
+
+#footer {
+    margin-top: 20px;
+    width: 100%;
+    height: 50px;
+    background-color: #dc8501;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: whitesmoke;
+    text-align: center;
+}
+
+@media only screen and (max-width: 780px) {
+    #main-img {
+        width: 160%;
+        height: 100%;
+        top: 0;
+        right: -73%;
+    }
+
+    .mother-title-img, .mother-description-img {
+        width: 150px;
+        height: 130px;
+    }
+
+    .mother-title-img {
+        left: 12%;
+    }
+
+    .mother-description-img {
+        top: 22%;
+        left: 3%;
+    }
+
+    #footer {
+        font-size: 13px;
+    }
+
+    .kvBCfW .wheel-section-container .details-wrapper .details h2,
+    .kvBCfW .wheel-section-container .details-wrapper .details p,
+    .kvBCfW .wheel-section-container .details-wrapper .details button,
+    .kvBCfW .wheel-section-container .details-wrapper .details.prize .prize-description {
+        margin: auto;
+        text-align: center;
+    }
+
+    .kvBCfW .wheel-section-container .details-wrapper .details button {
+        margin-top: 20px;
+    }
+
+    .kvBCfW .wheel-section-container .details-wrapper .details p,
+    .kvBCfW .wheel-section-container .details-wrapper .details.prize .prize-description {
+        font-size: 15px;
+        width: 90%;
+    }
+
+    .kvBCfW .wheel-section-container .details-wrapper .details {
+        text-align: center;
+    }
+
+    .cfEfwL .wheel-item {
+        font-size: 15px;
+    }
+
+    #data-modal {
+        left: 5%;
+        width: 90%;
+        margin: auto;
+    }
+
+    #data-modal h1 {
+        font-size: 24px;
+    }
+
+    #data-modal p {
+        font-size: 22px;
+    }
+
+    .input {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .input::placeholder {
+        font-size: 13px;
+    }
+
+    #submit-btn {
+        width: 100%;
+    }
 }
