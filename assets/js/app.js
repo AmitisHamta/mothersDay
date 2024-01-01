@@ -27,10 +27,22 @@ const setMusic = () => {
     music.play();
 }
 
-async function checkNumber () {
+async function getData () {
     let response = await fetch('https://mothersdayhamta-default-rtdb.firebaseio.com/users.json');
     let users = await response.json();
-    console.log(console.log(users));
+    console.log(users);
+    checkUser(users);
+}
+
+const checkUser = users => {
+    users.forEach(user => {
+        if (user.number === phoneInput.value) {
+            console.log('login successful');
+        }else {
+            errorText.textContent = 'لطفا با شماره تلفن مادر وارد شوید'
+            loginError();
+        }
+    })
 }
 
 const showContainer = () => {
@@ -44,11 +56,15 @@ const showContainer = () => {
         setMusic();
         resetInputs();
     }else {
-        errorText.classList.add('display-inline');
-        setTimeout(() => {
-            errorText.classList.remove('display-inline');
-        }, 3000)
+        loginError();
     }
+}
+
+const loginError = () => {
+    errorText.classList.add('display-inline');
+    setTimeout(() => {
+        errorText.classList.remove('display-inline');
+    }, 3000)
 }
 
 const resetInputs = () => {
@@ -81,6 +97,5 @@ musicBtn.addEventListener('click', () => {
 
 submitBtn.addEventListener('click', event => {
     event.preventDefault();
-    // showContainer();
-    checkNumber();
+    getData();
 })
