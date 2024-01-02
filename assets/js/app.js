@@ -75,7 +75,7 @@ const checkUser = users => {
                 console.log('successful');
                 setCardNumber(users.indexOf(user), user.number, user.chances, cardInput.value);
                 showContainer();
-                setUserCookie(user.number, user.chances, users.indexOf(user));
+                setUserCookie(user.number, user.chances, users.indexOf(user), cardInput.value);
                 setSpinBtn();
                 return true;
             }else {
@@ -86,7 +86,7 @@ const checkUser = users => {
     }
 }
 
-const setUserCookie = (number, chances, id) => {
+const setUserCookie = (number, chances, id, cardNumber) => {
     let now = new Date();
     let expire = now.getTime() + (365 * 24 * 60 * 60 * 1000);
     now.setTime(expire);
@@ -94,6 +94,7 @@ const setUserCookie = (number, chances, id) => {
     $.cookie = `number=${number};path=/;expires=${now}`;
     $.cookie = `chances=${chances};path=/;expires=${now}`;
     $.cookie = `id=${id};path=/;expires=${now}`;
+    $.cookie = `id=${cardNumber};path=/;expires=${now}`;
 }
 
 const getInfo = () => {
@@ -101,6 +102,7 @@ const getInfo = () => {
     let chances = 0;
     let number = 0;
     let id = 0;
+    let cardNumber = null;
 
     cookies.filter(cookie => {
         if (cookie.includes('number')) {
@@ -109,24 +111,24 @@ const getInfo = () => {
             chances = cookie.substring(cookie.indexOf('=') + 1);
         }else if (cookie.includes('id')) {
             id = cookie.substring(cookie.indexOf('=') + 1);
+        }else if (cookie.includes('card')) {
+            cardNumber = cookie.substring(cookie.indexOf('=') + 1);
         }
     })
 
     console.log(chances, number);
 
     if (chances && number) {
-        checkChances(chances);
-        updateCookie(number, chances, id);
+        checkChances(number, chances);
+        updateCookie(number, chances, id, cardNumber);
+        checkPrize(number, cardNumber)
     }
 }
 
 const checkChances = chances => {
     let spinAgainBtn = null;
-    let prize = '';
     setTimeout(() => {
         spinAgainBtn = $.querySelector('.try-again');
-        prize = $.querySelector('.prize h2');
-        console.log(prize.textContent);
 
         if (chances <= 1) {
             spinAgainBtn.classList.add('display-none');
@@ -144,11 +146,11 @@ const checkChances = chances => {
     }, 4100);
 }
 
-const updateCookie = (number, chances, id) => {
+const updateCookie = (number, chances, id, cardNumber) => {
     if (chances > 0) {
         let newChance = chances - 1;
         console.log(newChance);
-        setUserCookie(number, newChance, id);
+        setUserCookie(number, newChance, id, cardNumber);
         updateChances(newChance, id);
     }
 }
@@ -161,8 +163,32 @@ const setSpinBtn = () => {
     })
 }
 
-const checkPrize = () => {
+const checkPrize = (number, cardNumber) => {
+    let prize = null;
+    setTimeout(() => {
+        prize = $.querySelector('.prize h2');
+        checkPrize(prize.textContent);
+        if (prize.textContent.includes('نقدی')) {
+            setWinners(number, cardNumber)
+        }
+    }, 4100);
+}
 
+async function setWinners (number, cardNumber) {
+    let winner = {
+        number: number,
+        cardNumber: cardNumber
+    }
+    
+    await fetch(`https://mothersdayhamta-default-rtdb.firebaseio.com/winners.json`, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(winner)
+    })
+    .then(res => console.log(res))
+    .catch(err => console.error(err))
 }
 
 const showContainer = () => {
