@@ -89,12 +89,12 @@ const checkChances = chances => {
     setTimeout(() => {
         spinAgainBtn = $.querySelector('.try-again');
 
-        if (chances === 1) {
+        if (chances == 1) {
             spinAgainBtn.classList.add('display-none');
             console.log('chance-1');
-        }else if (chances === 2) {
+        }else if (chances == 2) {
             console.log('chance-2')
-        }else if (chances === 3) {
+        }else if (chances == 3) {
             console.log('chance-3');
         }
         
