@@ -36,9 +36,15 @@ async function getData () {
 
 async function updateData (number, chances, id) {
     console.log(id);
-    await fetch(`{https://mothersdayhamta-default-rtdb.firebaseio.com/users/${id}.json}`)
+    await fetch(`{https://mothersdayhamta-default-rtdb.firebaseio.com/users/${id}.chances.json}`, {
+        method: 'PUT',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(chances)
+    })
     .then(res => console.log(res))
-    // .then(res => console.log(res))
+    .catch(err => console.error(err))
 }
 
 const checkUser = users => {
