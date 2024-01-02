@@ -89,7 +89,7 @@ const checkChances = chances => {
     setTimeout(() => {
         spinAgainBtn = $.querySelector('.try-again');
 
-        if (chances == 1) {
+        if (chances <= 1) {
             spinAgainBtn.classList.add('display-none');
             console.log('chance-1');
         }else if (chances == 2) {
@@ -106,10 +106,12 @@ const checkChances = chances => {
 }
 
 const updateCookie = (number, chances) => {
-    let newChance = chances - 1;
-    console.log(newChance);
-    setUserCookie(number, newChance);
-    // updateData(number, newChance);
+    if (chances > 0) {
+        let newChance = chances - 1;
+        console.log(newChance);
+        setUserCookie(number, newChance);
+        // updateData(number, newChance);
+    }
 }
 
 const setSpinBtn = () => {
