@@ -43,8 +43,8 @@ const checkUser = users => {
             if (phoneInput.value === user.number) {
                 console.log('successful');
                 showContainer();
-                setUserCookie(user);
-                setSpinBtn(user.chances);
+                setUserCookie(user.number, user.chances);
+                setSpinBtn();
                 return true;
             }else {
                 errorText.textContent = "شماره تلفن مادر صحیح نمیباشد 😒"
@@ -54,13 +54,32 @@ const checkUser = users => {
     }
 }
 
-const setUserCookie = user => {
+const setUserCookie = (number, chances) => {
     let now = new Date();
     let expire = now.getTime() + (365 * 24 * 60 * 60 * 1000);
     now.setTime(expire);
 
-    $.cookie = `number=${user.number};path=/;expires=${now}`;
-    $.cookie = `chances=${user.chances};path=/;expires=${now}`;
+    $.cookie = `number=${number};path=/;expires=${now}`;
+    $.cookie = `chances=${chances};path=/;expires=${now}`;
+}
+
+const getInfo = () => {
+    let cookies = $.cookie.split(';');
+    let chances = 0;
+    let number = 0;
+
+    cookies.filter(cookie => {
+        if (cookie.includes('number')) {
+            number = cookie.substring(cookie.indexOf('=') + 1);
+        }else if (cookie.includes('chances')) {
+            chances = cookie.substring(cookie.indexOf('=') + 1);
+        }
+    })
+
+    if (chances && number) {
+        checkChances(chances);
+        updateCookie(number, chances);
+    }
 }
 
 const checkChances = chances => {
@@ -75,11 +94,17 @@ const checkChances = chances => {
     }
 }
 
-const setSpinBtn = chances => {
+const updateCookie = (number, chances) => {
+    let newChance = chances--;
+    setUserCookie(number, newChance);
+    // updateData(number, newChance);
+}
+
+const setSpinBtn = () => {
     const spinBtn = $.querySelector('.details button');
 
     spinBtn.addEventListener('click', () => {
-        checkChances(chances);
+        getInfo()
     })
 }
 
