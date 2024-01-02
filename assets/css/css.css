@@ -35,6 +35,10 @@ html, body {
     height: auto;
 }
 
+#mobile-img {
+    display: none;
+}
+
 .mother-title-img {
     position: absolute;
     top: 8%;
@@ -214,6 +218,10 @@ html, body {
     direction: rtl;
 }
 
+.kvBCfW .wheel-section-container .details-wrapper.show {
+    display: contents;
+}
+
 .kvBCfW .wheel-section-container .details-wrapper .details h2 {
     padding-bottom: 10px;
 }
@@ -256,6 +264,18 @@ html, body {
         left: 12%;
     }
 
+    /* #mobile-img {
+        display: inline;
+    } */
+
+    #grafic-container {
+        background-image: url(../Images/mo\ mo2.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top 0 left -20%;
+        margin-bottom: 50px;
+    }
+
     .mother-description-img {
         top: 22%;
         left: 3%;
@@ -287,13 +307,13 @@ html, body {
         text-align: center;
     }
 
-    .cfEfwL .wheel-item {
+    /* .cfEfwL .wheel-item {
         font-size: 15px !important;
     }
 
     .dQoHqJ .wheel-item::before {
         font-size: 15px !important;
-    }
+    } */
 
     #data-modal {
         left: 5%;
