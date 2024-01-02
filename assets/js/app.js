@@ -34,6 +34,13 @@ async function getData () {
     checkUser(users)
 }
 
+async function updateData (number, chances, id) {
+    console.log(id);
+    fetch(`{https://mothersdayhamta-default-rtdb.firebaseio.com/users/${id}.json}`)
+    .then(res => res.json())
+    .then(res => console.log(res))
+}
+
 const checkUser = users => {
     if (!phoneInput.value || !cardInput.value) {
         errorText.textContent = "لطفا اطلاعات رو وارد کنید 😊";
@@ -43,7 +50,7 @@ const checkUser = users => {
             if (phoneInput.value === user.number) {
                 console.log('successful');
                 showContainer();
-                setUserCookie(user.number, user.chances);
+                setUserCookie(user.number, user.chances, users.indexOf(user));
                 setSpinBtn();
                 return true;
             }else {
@@ -54,25 +61,29 @@ const checkUser = users => {
     }
 }
 
-const setUserCookie = (number, chances) => {
+const setUserCookie = (number, chances, id) => {
     let now = new Date();
     let expire = now.getTime() + (365 * 24 * 60 * 60 * 1000);
     now.setTime(expire);
 
     $.cookie = `number=${number};path=/;expires=${now}`;
     $.cookie = `chances=${chances};path=/;expires=${now}`;
+    $.cookie = `id=${id};path=/;expires=${now}`;
 }
 
 const getInfo = () => {
     let cookies = $.cookie.split(';');
     let chances = 0;
     let number = 0;
+    let id = 0;
 
     cookies.filter(cookie => {
         if (cookie.includes('number')) {
             number = cookie.substring(cookie.indexOf('=') + 1);
         }else if (cookie.includes('chances')) {
             chances = cookie.substring(cookie.indexOf('=') + 1);
+        }else if (cookie.includes('id')) {
+            id = cookie.substring(cookie.indexOf('=') + 1);
         }
     })
 
@@ -80,7 +91,7 @@ const getInfo = () => {
 
     if (chances && number) {
         checkChances(chances);
-        updateCookie(number, chances);
+        updateCookie(number, chances, id);
     }
 }
 
@@ -105,12 +116,12 @@ const checkChances = chances => {
     }, 4100);
 }
 
-const updateCookie = (number, chances) => {
+const updateCookie = (number, chances, id) => {
     if (chances > 0) {
         let newChance = chances - 1;
         console.log(newChance);
-        setUserCookie(number, newChance);
-        // updateData(number, newChance);
+        setUserCookie(number, newChance, id);
+        updateData(number, newChance, id);
     }
 }
 
