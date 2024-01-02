@@ -31,6 +31,24 @@ async function getData () {
     let response = await fetch('https://mothersdayhamta-default-rtdb.firebaseio.com/users.json');
     let users = await response.json();
     console.log(console.log(users));
+    checkUser(users)
+}
+
+const checkUser = users => {
+    if (!phoneInput.value || !cardInput.value) {
+        errorText.textContent = "لطفا اطلاعات رو وارد کنید 😊";
+        loginError();
+    }else {
+        users.some(user => {
+            if (phoneInput.value === user.number) {
+                console.log('successful');
+                return true;
+            }else {
+                errorText.textContent = "شماره تلفن مادر صحیح نمیباشد 😒"
+                loginError();
+            }
+        })
+    }
 }
 
 const showContainer = () => {
