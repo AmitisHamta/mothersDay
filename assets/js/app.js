@@ -197,7 +197,7 @@ async function updatePrizeCount () {
         method: 'PUT',
         headers: {
             'Content-type': 'application/json'
-        ``},
+        },
         body: JSON.stringify(currentCount - 1)
     })
     .then(res => console.log(res))
