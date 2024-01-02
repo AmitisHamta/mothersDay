@@ -30,7 +30,7 @@ const setMusic = () => {
 async function getData () {
     let response = await fetch('https://mothersdayhamta-default-rtdb.firebaseio.com/users.json');
     let users = await response.json();
-    console.log(console.log(users));
+    console.log(users);
     checkUser(users)
 }
 
@@ -39,15 +39,18 @@ const checkUser = users => {
         errorText.textContent = "لطفا اطلاعات رو وارد کنید 😊";
         loginError();
     }else {
-        users.some(user => {
+        let isLegit = users.some(user => {
             if (phoneInput.value === user.number) {
                 console.log('successful');
+                showContainer()
                 return true;
             }else {
                 errorText.textContent = "شماره تلفن مادر صحیح نمیباشد 😒"
                 loginError();
             }
         })
+
+        console.log(isLegit);
     }
 }
 
