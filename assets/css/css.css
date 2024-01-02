@@ -292,20 +292,11 @@ html, body {
     .kvBCfW .wheel-section-container .details-wrapper .details p,
     .kvBCfW .wheel-section-container .details-wrapper .details.prize .prize-description {
         font-size: 15px;
-        width: 90%;
     }
 
     .kvBCfW .wheel-section-container .details-wrapper .details {
         text-align: center;
     }
-
-    /* .cfEfwL .wheel-item {
-        font-size: 15px !important;
-    }
-
-    .dQoHqJ .wheel-item::before {
-        font-size: 15px !important;
-    } */
 
     #data-modal {
         left: 5%;
