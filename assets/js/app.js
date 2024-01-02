@@ -126,7 +126,7 @@ const checkChances = chances => {
     setTimeout(() => {
         spinAgainBtn = $.querySelector('.try-again');
         prize = $.querySelector('.prize h2');
-        console.log(prize);
+        console.log(prize.textContent);
 
         if (chances <= 1) {
             spinAgainBtn.classList.add('display-none');
