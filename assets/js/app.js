@@ -98,15 +98,21 @@ const checkChances = chances => {
 
 const updateCookie = (number, chances) => {
     let newChance = chances--;
+    console.log(newChance);
     setUserCookie(number, newChance);
     // updateData(number, newChance);
 }
 
 const setSpinBtn = () => {
     const spinBtn = $.querySelector('.details button');
+    const spinAgainBtn = $.querySelector('.try-again');
 
     spinBtn.addEventListener('click', () => {
         getInfo()
+    })
+
+    spinAgainBtn.addEventListener('click', () => {
+        getInfo();
     })
 }
 
