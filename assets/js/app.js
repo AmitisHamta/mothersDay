@@ -86,9 +86,7 @@ const getInfo = () => {
 
 const checkChances = chances => {
     const spinAgainBtn = $.querySelector('.try-again');
-    spinAgainBtn.addEventListener('click', () => {
-        getInfo();
-    })
+    
     if (chances === 1) {
         spinAgainBtn.classList.add('display-none');
         console.log('chance-1');
@@ -97,6 +95,12 @@ const checkChances = chances => {
     }else if (chances === 3) {
         console.log('chance-3');
     }
+
+    setTimeout(() => {
+        spinAgainBtn.addEventListener('click', () => {
+            getInfo();
+        })
+    }, 4100);
 }
 
 const updateCookie = (number, chances) => {
