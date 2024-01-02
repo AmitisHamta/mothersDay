@@ -12,7 +12,7 @@ const graficContainer = $.getElementById('grafic-container');
 const modal = $.getElementById('data-modal')
 const submitBtn = $.getElementById('submit-btn');
 const phoneInput = $.getElementById('phone-input');
-const cardInput = $.getElementById('card-input');
+// const cardInput = $.getElementById('card-input');
 const errorText = $.querySelector('small');
 const spinner = $.querySelector('.commonninja_component')
 
@@ -46,35 +46,35 @@ async function updateChances (chances, id) {
     .catch(err => console.error(err))
 }
 
-async function setCardNumber (id, number, chances, cardNumber) {
-    let updatedUser = {
-        number: number,
-        chances: chances,
-        cardNumber: cardNumber
-    }
+// async function setCardNumber (id, number, chances, cardNumber) {
+//     let updatedUser = {
+//         number: number,
+//         chances: chances,
+//         cardNumber: cardNumber
+//     }
 
-    await fetch(`https://mothersdayhamta-default-rtdb.firebaseio.com/users/${id}.json`, {
-        method: 'PUT',
-        headers: {
-            'Content-type': 'application/json'
-        },
-        body: JSON.stringify(updatedUser)
-    })
-    .then(res => console.log(res))
-    .catch(err => console.error(err))
-}
+//     await fetch(`https://mothersdayhamta-default-rtdb.firebaseio.com/users/${id}.json`, {
+//         method: 'PUT',
+//         headers: {
+//             'Content-type': 'application/json'
+//         },
+//         body: JSON.stringify(updatedUser)
+//     })
+//     .then(res => console.log(res))
+//     .catch(err => console.error(err))
+// }
 
 const checkUser = users => {
-    if (!phoneInput.value || !cardInput.value) {
+    if (!phoneInput.value /*|| !cardInput.value*/) {
         errorText.textContent = "لطفا اطلاعات رو وارد کنید 😊";
         loginError();
     }else {
         let isLegit = users.some(user => {
             if (phoneInput.value === user.number) {
                 console.log('successful');
-                setCardNumber(users.indexOf(user), user.number, user.chances, cardInput.value);
+                // setCardNumber(users.indexOf(user), user.number, user.chances, cardInput.value);
                 showContainer();
-                setUserCookie(user.number, user.chances, users.indexOf(user), cardInput.value);
+                setUserCookie(user.number, user.chances, users.indexOf(user), /*cardInput.value*/);
                 setSpinBtn();
                 return true;
             }else {
@@ -85,7 +85,7 @@ const checkUser = users => {
     }
 }
 
-const setUserCookie = (number, chances, id, cardNumber) => {
+const setUserCookie = (number, chances, id/*, cardNumber*/) => {
     let now = new Date();
     let expire = now.getTime() + (365 * 24 * 60 * 60 * 1000);
     now.setTime(expire);
@@ -93,7 +93,7 @@ const setUserCookie = (number, chances, id, cardNumber) => {
     $.cookie = `number=${number};path=/;expires=${now}`;
     $.cookie = `chances=${chances};path=/;expires=${now}`;
     $.cookie = `id=${id};path=/;expires=${now}`;
-    $.cookie = `cardNumber=${cardNumber};path=/;expires=${now}`;
+    // $.cookie = `cardNumber=${cardNumber};path=/;expires=${now}`;
 }
 
 const getInfo = () => {
@@ -101,7 +101,7 @@ const getInfo = () => {
     let chances = 0;
     let number = 0;
     let id = 0;
-    let cardNumber = null;
+    // let cardNumber = null;
 
     cookies.filter(cookie => {
         if (cookie.includes('number')) {
@@ -110,17 +110,17 @@ const getInfo = () => {
             chances = cookie.substring(cookie.indexOf('=') + 1);
         }else if (cookie.includes('id')) {
             id = cookie.substring(cookie.indexOf('=') + 1);
-        }else if (cookie.includes('card')) {
+        }/*else if (cookie.includes('card')) {
             cardNumber = cookie.substring(cookie.indexOf('=') + 1);
-        }
+        }*/
     })
 
     console.log(chances, number);
 
     if (chances && number) {
         checkChances(chances);
-        updateCookie(number, chances, id, cardNumber);
-        checkPrize(number, cardNumber)
+        updateCookie(number, chances, id, /*cardNumber*/);
+        checkPrize(number, /*cardNumber*/)
     }
 }
 
@@ -145,11 +145,11 @@ const checkChances = chances => {
     }, 4100);
 }
 
-const updateCookie = (number, chances, id, cardNumber) => {
+const updateCookie = (number, chances, id/*, cardNumber*/) => {
     if (chances > 0) {
         let newChance = chances - 1;
         console.log(newChance);
-        setUserCookie(number, newChance, id, cardNumber);
+        setUserCookie(number, newChance, id/*, cardNumber*/);
         updateChances(newChance, id);
     }
 }
@@ -162,22 +162,22 @@ const setSpinBtn = () => {
     })
 }
 
-const checkPrize = (number, cardNumber) => {
+const checkPrize = (number/*, cardNumber*/) => {
     let prize = null;
     setTimeout(() => {
         prize = $.querySelector('.prize h2');
         if (prize.textContent.includes('نقدی')) {
-            setWinners(number, cardNumber)
+            setWinners(number/*, cardNumber*/)
         }
     }, 4100);
 }
 
-async function setWinners (number, cardNumber) {
+async function setWinners (number/*, cardNumber*/) {
     let currentCount = await getTotalPrizeCount();
     if (currentCount > 0) {
         let winner = {
             number: number,
-            cardNumber: cardNumber
+            // cardNumber: cardNumber
         }
         
         await fetch(`https://mothersdayhamta-default-rtdb.firebaseio.com/winners.json`, {
