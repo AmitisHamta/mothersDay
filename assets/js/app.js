@@ -249,9 +249,7 @@ const changeMusicStatus = () => {
 }
 
 window.addEventListener('load', () => {
-    // setFadeIn();
-    // setMusic();
-    updatePrizeCount();
+    
 })
 
 musicBtn.addEventListener('click', () => {
