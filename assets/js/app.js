@@ -34,7 +34,7 @@ async function getData () {
     checkUser(users)
 }
 
-async function updateData (number, chances, id) {
+async function updateChances (chances, id) {
     console.log(id);
     await fetch(`https://mothersdayhamta-default-rtdb.firebaseio.com/users/${id}/chances.json`, {
         method: 'PUT',
@@ -42,6 +42,24 @@ async function updateData (number, chances, id) {
             'Content-type': 'application/json'
         },
         body: JSON.stringify(chances)
+    })
+    .then(res => console.log(res))
+    .catch(err => console.error(err))
+}
+
+async function setCardNumber (id, number, chances, cardNumber) {
+    let updatedUser = {
+        number: number,
+        chances: chances,
+        cardNumber: cardNumber
+    }
+
+    await fetch(`https://mothersdayhamta-default-rtdb.firebaseio.com/users/${id}.json`, {
+        method: 'PUT',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(updatedUser)
     })
     .then(res => console.log(res))
     .catch(err => console.error(err))
@@ -55,6 +73,7 @@ const checkUser = users => {
         let isLegit = users.some(user => {
             if (phoneInput.value === user.number) {
                 console.log('successful');
+                setCardNumber(users.indexOf(user), user.number, user.chances, cardInput.value);
                 showContainer();
                 setUserCookie(user.number, user.chances, users.indexOf(user));
                 setSpinBtn();
@@ -127,7 +146,7 @@ const updateCookie = (number, chances, id) => {
         let newChance = chances - 1;
         console.log(newChance);
         setUserCookie(number, newChance, id);
-        updateData(number, newChance, id);
+        updateChances(newChance, id);
     }
 }
 
