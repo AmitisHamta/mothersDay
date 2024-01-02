@@ -97,10 +97,10 @@ const checkChances = chances => {
         }else if (chances === 3) {
             console.log('chance-3');
         }
-        console.log(spinAgainBtn);
         
         spinAgainBtn.addEventListener('click', () => {
             console.log('spin again');
+            getInfo();
         })
     }, 4100);
 }
