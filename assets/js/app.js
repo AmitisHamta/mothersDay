@@ -44,7 +44,7 @@ const checkUser = users => {
                 console.log('successful');
                 showContainer();
                 setUserCookie(user);
-                checkChances(user.chances)
+                setSpinBtn(user.chances);
                 return true;
             }else {
                 errorText.textContent = "شماره تلفن مادر صحیح نمیباشد 😒"
@@ -64,8 +64,23 @@ const setUserCookie = user => {
 }
 
 const checkChances = chances => {
+    const spinAgainBtn = $.querySelector('.try-again');
+    if (chances === 1) {
+        spinAgainBtn.classList.add('display-none');
+        console.log('chance-1');
+    }else if (chances === 2) {
+        console.log('chance-2')
+    }else if (chances === 3) {
+        console.log('chance-3');
+    }
+}
+
+const setSpinBtn = chances => {
     const spinBtn = $.querySelector('.details button');
-    console.log(spinBtn);
+
+    spinBtn.addEventListener('click', () => {
+        checkChances(chances);
+    })
 }
 
 const showContainer = () => {
