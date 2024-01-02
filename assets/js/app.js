@@ -27,15 +27,13 @@ const setMusic = () => {
     music.play();
 }
 
-async function checkNumber () {
+async function getData () {
     let response = await fetch('https://mothersdayhamta-default-rtdb.firebaseio.com/users.json');
     let users = await response.json();
     console.log(console.log(users));
-    showContainer();
 }
 
 const showContainer = () => {
-    if (phoneInput.value && cardInput.value) {
         errorText.classList.remove('display-inline');
         modal.classList.add('display-none');
         graficContainer.style.filter = 'none';
@@ -44,12 +42,13 @@ const showContainer = () => {
         setFadeIn();
         setMusic();
         resetInputs();
-    }else {
-        errorText.classList.add('display-inline');
-        setTimeout(() => {
-            errorText.classList.remove('display-inline');
-        }, 3000)
-    }
+}
+
+const loginError = () => {
+    errorText.classList.add('display-inline');
+    setTimeout(() => {
+        errorText.classList.remove('display-inline');
+    }, 3000)
 }
 
 const resetInputs = () => {
@@ -82,6 +81,5 @@ musicBtn.addEventListener('click', () => {
 
 submitBtn.addEventListener('click', event => {
     event.preventDefault();
-    // showContainer();
-    checkNumber();
+    getData();
 })
