@@ -35,10 +35,6 @@ html, body {
     height: auto;
 }
 
-#mobile-img {
-    display: none;
-}
-
 .mother-title-img {
     position: absolute;
     top: 8%;
@@ -264,15 +260,11 @@ html, body {
         left: 12%;
     }
 
-    /* #mobile-img {
-        display: inline;
-    } */
-
     #grafic-container {
         background-image: url(../Images/mo\ mo2.png);
         background-size: cover;
         background-repeat: no-repeat;
-        background-position: top 0 left -20%;
+        background-position: top 0 left 0;
         margin-bottom: 50px;
     }
 
