@@ -76,6 +76,8 @@ const getInfo = () => {
         }
     })
 
+    console.log(chances, number);
+
     if (chances && number) {
         checkChances(chances);
         updateCookie(number, chances);
