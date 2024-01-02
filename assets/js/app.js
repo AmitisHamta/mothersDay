@@ -122,8 +122,11 @@ const getInfo = () => {
 
 const checkChances = chances => {
     let spinAgainBtn = null;
+    let prize = '';
     setTimeout(() => {
         spinAgainBtn = $.querySelector('.try-again');
+        prize = $.querySelector('.prize h2');
+        console.log(prize);
 
         if (chances <= 1) {
             spinAgainBtn.classList.add('display-none');
@@ -156,6 +159,10 @@ const setSpinBtn = () => {
     spinBtn.addEventListener('click', () => {
         getInfo();
     })
+}
+
+const checkPrize = () => {
+
 }
 
 const showContainer = () => {
