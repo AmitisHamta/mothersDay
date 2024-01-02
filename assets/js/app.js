@@ -86,6 +86,9 @@ const getInfo = () => {
 
 const checkChances = chances => {
     const spinAgainBtn = $.querySelector('.try-again');
+    spinAgainBtn.addEventListener('click', () => {
+        getInfo();
+    })
     if (chances === 1) {
         spinAgainBtn.classList.add('display-none');
         console.log('chance-1');
@@ -109,9 +112,7 @@ const setSpinBtn = () => {
 
     spinBtn.addEventListener('click', () => {
         getInfo();
-        spinAgainBtn.addEventListener('click', () => {
-            getInfo();
-        })
+        
     })
 }
 
