@@ -36,7 +36,7 @@ async function getData () {
 
 async function updateData (number, chances, id) {
     console.log(id);
-    fetch(`{https://mothersdayhamta-default-rtdb.firebaseio.com/users/${id}.json}`)
+    fetch(`{https://mothersdayhamta-default-rtdb.firebaseio.com/users[${id}].json}`)
     .then(res => res.json())
     .then(res => console.log(res))
 }
