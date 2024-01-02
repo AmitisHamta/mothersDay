@@ -88,21 +88,21 @@ const checkChances = chances => {
     let spinAgainBtn = null;
     setTimeout(() => {
         spinAgainBtn = $.querySelector('.try-again');
+
+        if (chances === 1) {
+            spinAgainBtn.classList.add('display-none');
+            console.log('chance-1');
+        }else if (chances === 2) {
+            console.log('chance-2')
+        }else if (chances === 3) {
+            console.log('chance-3');
+        }
+        console.log(spinAgainBtn);
+        
+        spinAgainBtn.addEventListener('click', () => {
+            console.log('spin again');
+        })
     }, 4100);
-    
-    if (chances === 1) {
-        spinAgainBtn.classList.add('display-none');
-        console.log('chance-1');
-    }else if (chances === 2) {
-        console.log('chance-2')
-    }else if (chances === 3) {
-        console.log('chance-3');
-    }
-    console.log(spinAgainBtn);
-    
-    spinAgainBtn.addEventListener('click', () => {
-        console.log('spin again');
-    })
 }
 
 const updateCookie = (number, chances) => {
