@@ -58,8 +58,8 @@ const setUserCookie = user => {
     let expire = now.getTime() + (365 * 12 * 60 * 60 * 1000);
     now.setTime(expire);
 
-    $.cookie = `number=${user.number};path=/;expires=${now}`;
-    $.cookie = `chances=${user.chances};path=/;expires=${now}`;
+    $.cookie = `number=${user.number};path=/;expires=${expire}`;
+    $.cookie = `chances=${user.chances};path=/;expires=${expire}`;
 }
 
 const showContainer = () => {
