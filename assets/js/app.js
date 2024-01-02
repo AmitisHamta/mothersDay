@@ -234,7 +234,7 @@ const loginError = () => {
 
 const resetInputs = () => {
     phoneInput.value = '';
-    cardInput.value = '';
+    // cardInput.value = '';
 }
 
 const changeMusicStatus = () => {
