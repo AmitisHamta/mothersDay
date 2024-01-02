@@ -186,7 +186,29 @@ async function setWinners (number, cardNumber) {
         body: JSON.stringify(winner)
     })
     .then(res => console.log(res))
+    .catch(err => console.error(err));
+
+    updatePrizeCount()
+}
+
+async function updatePrizeCount () {
+    let currentCount = await getTotalPrizeCount(); 
+    await fetch(`https://mothersdayhamta-default-rtdb.firebaseio.com/totalPrize.json`, {
+        method: 'PUT',
+        headers: {
+            'Content-type': 'application/json'
+        ``},
+        body: JSON.stringify(currentCount - 1)
+    })
+    .then(res => console.log(res))
     .catch(err => console.error(err))
+}
+
+async function getTotalPrizeCount () {
+    let response = await fetch(`https://mothersdayhamta-default-rtdb.firebaseio.com/totalPrize.json`);
+    let count = response.json();
+
+    return count;
 }
 
 const showContainer = () => {
