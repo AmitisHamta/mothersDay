@@ -85,7 +85,10 @@ const getInfo = () => {
 }
 
 const checkChances = chances => {
-    const spinAgainBtn = $.querySelector('.try-again');
+    let spinAgainBtn = null;
+    setTimeout(() => {
+        spinAgainBtn = $.querySelector('.try-again');
+    }, 4100);
     
     if (chances === 1) {
         spinAgainBtn.classList.add('display-none');
@@ -96,12 +99,10 @@ const checkChances = chances => {
         console.log('chance-3');
     }
     console.log(spinAgainBtn);
-
-    setTimeout(() => {
-        spinAgainBtn.addEventListener('click', () => {
-            console.log('spin again');
-        })
-    }, 4300);
+    
+    spinAgainBtn.addEventListener('click', () => {
+        console.log('spin again');
+    })
 }
 
 const updateCookie = (number, chances) => {
