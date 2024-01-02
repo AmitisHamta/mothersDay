@@ -166,7 +166,6 @@ const checkPrize = (number, cardNumber) => {
     let prize = null;
     setTimeout(() => {
         prize = $.querySelector('.prize h2');
-        checkPrize(prize.textContent);
         if (prize.textContent.includes('نقدی')) {
             setWinners(number, cardNumber)
         }
