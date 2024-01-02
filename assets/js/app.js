@@ -56,7 +56,7 @@ const checkUser = users => {
 const setUserCookie = user => {
     let now = new Date();
     let expire = now.getTime() + (365 * 12 * 60 * 60 * 1000);
-    now.setDate(expire);
+    now.setTime(expire);
 
     $.cookie = `number=${user.number};path=/;expires=${now}`;
     $.cookie = `chances=${user.chances};path=/;expires=${now}`;
