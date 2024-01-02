@@ -212,6 +212,7 @@ html, body {
 .kvBCfW .wheel-section-container .details-wrapper .details p,
 .kvBCfW .wheel-section-container .details-wrapper .details button {
     direction: rtl;
+    text-align: center !important;
 }
 
 .kvBCfW .wheel-section-container .details-wrapper.show {
@@ -292,6 +293,7 @@ html, body {
     .kvBCfW .wheel-section-container .details-wrapper .details p,
     .kvBCfW .wheel-section-container .details-wrapper .details.prize .prize-description {
         font-size: 15px;
+        text-align: center !important;
     }
 
     .kvBCfW .wheel-section-container .details-wrapper .details {
