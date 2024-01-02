@@ -173,22 +173,25 @@ const checkPrize = (number, cardNumber) => {
 }
 
 async function setWinners (number, cardNumber) {
-    let winner = {
-        number: number,
-        cardNumber: cardNumber
-    }
+    let currentCount = await getTotalPrizeCount();
+    if (currentCount > 0) {
+        let winner = {
+            number: number,
+            cardNumber: cardNumber
+        }
+        
+        await fetch(`https://mothersdayhamta-default-rtdb.firebaseio.com/winners.json`, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(winner)
+        })
+        .then(res => console.log(res))
+        .catch(err => console.error(err));
     
-    await fetch(`https://mothersdayhamta-default-rtdb.firebaseio.com/winners.json`, {
-        method: 'POST',
-        headers: {
-            'Content-type': 'application/json'
-        },
-        body: JSON.stringify(winner)
-    })
-    .then(res => console.log(res))
-    .catch(err => console.error(err));
-
-    updatePrizeCount()
+        updatePrizeCount()
+    }
 }
 
 async function updatePrizeCount () {
@@ -249,7 +252,7 @@ const changeMusicStatus = () => {
 }
 
 window.addEventListener('load', () => {
-    
+
 })
 
 musicBtn.addEventListener('click', () => {
