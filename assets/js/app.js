@@ -42,16 +42,24 @@ const checkUser = users => {
         let isLegit = users.some(user => {
             if (phoneInput.value === user.number) {
                 console.log('successful');
-                showContainer()
+                showContainer();
+                setUserCookie(user);
                 return true;
             }else {
                 errorText.textContent = "شماره تلفن مادر صحیح نمیباشد 😒"
                 loginError();
             }
         })
-
-        console.log(isLegit);
     }
+}
+
+const setUserCookie = user => {
+    let now = new Date();
+    let expire = now.getTime() + (365 * 12 * 60 * 60 * 1000);
+    now.setDate(expire);
+
+    $.cookie = `number=${user.number};path=/;expires=${now}`;
+    $.cookie = `chances=${user.chances};path=/;expires=${now}`;
 }
 
 const showContainer = () => {
