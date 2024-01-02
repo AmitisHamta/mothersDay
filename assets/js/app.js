@@ -93,7 +93,7 @@ const setUserCookie = (number, chances, id, cardNumber) => {
     $.cookie = `number=${number};path=/;expires=${now}`;
     $.cookie = `chances=${chances};path=/;expires=${now}`;
     $.cookie = `id=${id};path=/;expires=${now}`;
-    $.cookie = `id=${cardNumber};path=/;expires=${now}`;
+    $.cookie = `cardNumber=${cardNumber};path=/;expires=${now}`;
 }
 
 const getInfo = () => {
@@ -118,7 +118,7 @@ const getInfo = () => {
     console.log(chances, number);
 
     if (chances && number) {
-        checkChances(number, chances);
+        checkChances(chances);
         updateCookie(number, chances, id, cardNumber);
         checkPrize(number, cardNumber)
     }
