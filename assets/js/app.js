@@ -98,9 +98,9 @@ const checkChances = chances => {
 
     setTimeout(() => {
         spinAgainBtn.addEventListener('click', () => {
-            getInfo();
+            console.log('spin again');
         })
-    }, 4100);
+    }, 4300);
 }
 
 const updateCookie = (number, chances) => {
