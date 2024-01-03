@@ -97,7 +97,7 @@ html, body {
 }
 
 .height-110 {
-    height: 110%;
+    height: 100%;
 }
 
 #data-modal {
@@ -282,36 +282,13 @@ html, body {
     }
 }
 
-/* .box{
-    width: 50%;
-    margin: 0 auto;
-    padding:30px;
-    text-align: center;
-  }
-  .odometer{
-    font-size: 12em;
-    background:#fff;
-      border-radius:40px 40px 0 0;
-      margin-top:50px;
-      border-bottom: 2px solid #ddd;
-  }
-  .btn-winner{
-    font-size: 2em;
-    background: #6c9dc9;
-    color: #fff;
-    cursor: pointer;
-  }
-  .btn-winner:hover {
-      transition-duration: 0.1s;
-      box-shadow:  0 0 18px rgba(255, 255, 255, 0.75);
-      user-select: none;
-  } */
-
 #spinner-container {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
+    position: relative;
+    padding: 50px;
     display: none;
 }
 
@@ -338,11 +315,11 @@ html, body {
     height: 100%;
     border: 10px solid whitesmoke;
     overflow: hidden;
-    /* transition: all ease-in-out 5s;
-    transform: rotate(90deg); */
+    transition: all ease-in-out 5s;
+    transform: rotate(90deg);
 }
 
-#spinner-container i {
+.mainbox > i {
     position: absolute;
     top: 45%;
     right: -5%;
@@ -359,31 +336,27 @@ span {
 
 .span1 {
     clip-path: polygon(0 17%, 0 50%, 50% 50%);
-    background-color: green;
+    background-color: #dc8501;
 }
 
 .span2 {
     clip-path: polygon(0 17%, 30% 0, 50% 50%);
-    background-color: red;
+    background-color: #108ea5;
 }
 
 .span3 {
     clip-path: polygon(30% 0%, 71% 0, 50% 50%);
-    background-color: blue;
+    background-color: #dc8501;
 }
 
 .span4 {
     clip-path: polygon(71% 0, 100% 18%, 50% 50%);
-    background-color: salmon;
+    background-color: #108ea5;
 }
 
 .span5 {
     clip-path: polygon(100% 18%, 100% 50%, 50% 50%);
-    background-color: darkorange;
-}
-
-.box2 .span3 {
-    background-color: greenyellow;
+    background-color: #dc8501;
 }
 
 .box2{
@@ -393,6 +366,23 @@ span {
 }
 
 .box2 .span1 {
+    background-color: #108ea5;
+}
+
+.box2 .span2 {
+    background-color: #dc8501;
+
+}
+
+.box2 .span3 {
+    background-color: #108ea5;
+}
+
+.box2 .span4 {
+    background-color: #dc8501;
+}
+
+.box2 .span5 {
     background-color: #108ea5;
 }
 
@@ -515,5 +505,134 @@ h5 {
 @keyframes animateArrow {
     50% {
         right: -50px;
+    }
+}
+
+.prize-modal {
+    width: 30%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px;
+    background-color: whitesmoke;
+    border: 1px solid whitesmoke;
+    border-radius: 20px;
+    position: absolute;
+    z-index: 1000;
+    display: none;
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+.show-modal {
+    opacity: 1;
+    display: flex;
+}
+
+.prize-modal h1 {
+    font-size: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.prize-modal h1 i {
+    color: red;
+    font-size: 50px;
+}
+
+.prize-modal p {
+    font-size: 20px;
+    text-align: center;
+}
+
+.prize-modal.show-modal ~ .mainbox {
+    filter: blur(5px);
+}
+
+.prize-modal button {
+    width: 90%;
+    height: 50px;
+    font-size: 20px;
+    background-color: #dc8501;
+    border: 1px solid #dc8501;
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width: 780px) {
+    #main-img {
+        width: 160%;
+        height: 100%;
+        top: 0;
+        right: -73%;
+        display: none;
+    }
+
+    .mother-title-img, .mother-description-img {
+        width: 150px;
+        height: 130px;
+    }
+
+    .mother-title-img {
+        left: 12%;
+    }
+
+    #grafic-container {
+        background-image: url(../Images/mo\ mo2.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top 0 left 0;
+        margin-bottom: 50px;
+    }
+
+    .mother-description-img {
+        top: 22%;
+        left: 3%;
+    }
+
+    #footer {
+        font-size: 13px;
+    }
+
+    #data-modal {
+        left: 5%;
+        width: 90%;
+        margin: auto;
+    }
+
+    #data-modal h1 {
+        font-size: 24px;
+    }
+
+    #data-modal p {
+        font-size: 22px;
+    }
+
+    .input {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .input::placeholder {
+        font-size: 13px;
+    }
+
+    #submit-btn {
+        width: 100%;
+    }
+
+    #data-modal small {
+        font-size: 14px;
+    }
+
+    body {
+        overflow-x: hidden;
     }
 }
