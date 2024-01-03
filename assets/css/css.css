@@ -635,4 +635,37 @@ h5 {
     body {
         overflow-x: hidden;
     }
+
+    .mainbox {
+        width: 300px;
+        height: 290px;
+    }
+
+    .mainbox > i {
+        position: absolute;
+        top: 45%;
+        right: -20%;
+        color: #333;
+        font-size: 30px;
+    }
+
+    .spin {
+        font-size: 12px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .spin:active {
+        width: 55px;
+        height: 55px;
+    }
+
+    h5 {
+        font-size: 13px;
+    }
+
+    .prize-modal {
+        width: 100%;
+    }
+
 }
