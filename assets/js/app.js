@@ -256,12 +256,9 @@ const spin = () => {
             setTimeout(() => {
                 element.classList.add('animate');
                 checkPrize(clicked);
-            }, 5000);
-        
-            setTimeout(() => {
                 box.style.setProperty(`transition`, 'initial');
                 box.style.transform = 'rotate(90deg)'
-            }, 6000);
+            }, 5000);
 
             clicked++;
             entries--;
@@ -310,12 +307,9 @@ const spin = () => {
         setTimeout(() => {
             element.classList.add('animate');
             checkPrize(clicked);
-        }, 5000);
-    
-        setTimeout(() => {
             box.style.setProperty(`transition`, 'initial');
             box.style.transform = 'rotate(90deg)'
-        }, 6000);
+        }, 5000);
 
         clicked = clicked + 1;
         entries = entries - 1;
