@@ -69,6 +69,7 @@ const checkInput = users => {
                 console.log(user);
                 console.log(users.indexOf(user));
                 showContainer();
+                checkZeroChance();
                 return true;
             }else {
                 errorText.textContent = 'شماره تلفن نادرست است'
@@ -151,6 +152,13 @@ const getUserNumber = () => {
     })
 
     return number;
+}
+
+const checkZeroChance = () => {
+    let chances = getUserChances();
+    if (chances === 0) {
+        spinBtn.style.display = 'none'
+    }
 }
 
 const showContainer = () => {
