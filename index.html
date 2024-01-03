@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/5ab2e9fcc1.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.commoninja.com/sdk/latest/commonninja.js" defer></script>
+    <!-- <script src="https://cdn.commoninja.com/sdk/latest/commonninja.js" defer></script> -->
     <link rel="shortcut icon" href="assets/Images/Mom.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/css.css">
     <title>Celebration</title>
@@ -38,11 +38,76 @@
                 <i class="fa-solid fa-play"></i>
             </button>
         </div>
-        <div class="commonninja_component pid-73264568-e892-4505-a9bf-0439bb2c85d0"></div>
+        <div id="spinner-container">
+            <div class="mainbox" id="mainbox">
+                <div class="box" id="box">
+                    <div class="box1">
+                        <span class="font span1">
+                            <h5>جایزه1</h5>
+                        </span>
+                        <span class="font span2">
+                            <h5>جایزه2</h5>
+                        </span>
+                        <span class="font span3">
+                            <h5>جایزه3</h5>
+                        </span>
+                        <span class="font span4">
+                            <h5>جایزه4</h5>
+                        </span>
+                        <span class="font span5">
+                            <h5>جایزه5</h5>
+                        </span>
+                    </div>
+                    <div class="box2">
+                        <span class="font span1">
+                            <h5>1جایزه</h5>
+                        </span>
+                        <span class="font span2">
+                            <h5>2جایزه</h5>
+                        </span>
+                        <span class="font span3">
+                            <h5>جایزه3</h5>
+                        </span>
+                        <span class="font span4">
+                            <h5>جایزه4</h5>
+                        </span>
+                        <span class="font span5">
+                            <h5>جایزه5</h5>
+                        </span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-left-long"></i>
+                <button class="spin" onclick="spin()">بچرخون</button>
+            </div>
+        </div>
+        <!-- <audio src=""></audio> -->
+        <!-- <div class="commonninja_component pid-73264568-e892-4505-a9bf-0439bb2c85d0"></div> -->
+        <!-- <div id="odometer" class="odometer box">0</div>
+        <div class="btn-winner box" onclick="getWinner();">Get Winner</div> -->
         <div id="footer">
             <p>شرکت آمیتیس همتا، روز مادر را به شما تبریک میگوید</p>
         </div>
     </div>
+
+    <!-- <script type="text/javascript">
+        function generateRandom(maxLimit = 100){
+          let rand = Math.random() * maxLimit;
+          rand = Math.floor(rand);
+          return rand;
+        }
+        
+        function getWinner(){
+          document.getElementsByClassName('btn-winner')[0].innerHTML = 'Please wait for the result ....';
+          interval = setInterval(function(){
+              document.getElementById('odometer').innerHTML = generateRandom();
+          },100);
+          setTimeout(function(){
+            clearInterval(interval);
+            document.getElementsByClassName('btn-winner')[0].innerHTML = 'Get Winner';
+          },3000);
+        }
+          
+      </script> -->
     <script src="assets/js/app.js" type="module"></script>
 </body>
 </html>
