@@ -644,7 +644,7 @@ h5 {
     .mainbox > i {
         position: absolute;
         top: 45%;
-        right: -20%;
+        right: 0%;
         color: #333;
         font-size: 30px;
     }

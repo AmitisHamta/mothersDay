@@ -333,7 +333,7 @@ const updateCookies = (clicks, chances, entries) => {
 
 const checkPrize = clicked => {
 
-    if (clicked === 3 || clicked === 7 || clicked === 14 || clicked === 16 || clicked === 25 || clicked === 29 || clicked === 32 || clicked === 38) {
+    if (clicked === 3 || clicked === 7 || clicked === 14 || clicked === 16 || clicked === 25 || clicked === 29 || clicked === 32) {
         prizeTitle.textContent = 'وجه نقد'
         prizeDescription.textContent = "بانوی زیبا، تبریک، شما برنده پنج میلیون ریال وجه نقد شده اید"
         showPrizeModal();
